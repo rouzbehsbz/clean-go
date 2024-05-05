@@ -8,13 +8,13 @@ import (
 )
 
 type UserRegisterDto struct {
-	Email    string `json:email`
-	Password string `json:password`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type UserLoginDto struct {
-	Email    string `json:email`
-	Password string `json:password`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 func UserRegisterController(c echo.Context, container *common.Container) error {

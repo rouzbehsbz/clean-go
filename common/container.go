@@ -11,10 +11,10 @@ type Container struct {
 	UserRepository usecases.IUserRepository
 }
 
-func NewContainer() (*Container, error) {
+func NewContainer(config *Config) (*Container, error) {
 	p := new(Container)
 
-	postgresDb, err := postgres.GetInstance("host=localhost user=postgres password=postgres dbname=clean-go port=5432 sslmode=disable TimeZone=Asia/Tehran")
+	postgresDb, err := postgres.GetInstance(config.GetDatabaseConnectionString())
 
 	if err != nil {
 		return nil, err

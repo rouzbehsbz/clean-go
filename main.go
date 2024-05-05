@@ -3,11 +3,17 @@ package main
 import (
 	"clean-go/common"
 	"clean-go/presentation/http"
+	"fmt"
 )
 
 func main() {
-	container := common.NewContainer()
-	server := http.NewServer(container)
+	container, err := common.NewContainer()
 
-	server.Listen("0.0.0.0", 3000)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		server := http.NewServer(container)
+
+		server.Listen("0.0.0.0", 3000)
+	}
 }
